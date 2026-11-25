@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="EYAL TV ONLINE: directorio de canales y transmisiones gratuitas autorizadas.">
+<title>EYAL TV ONLINE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<style>
+:root{--bg:#080d18;--panel:#101a2b;--panel2:#142139;--line:#24344e;--muted:#91a2bb;--text:#f4f7fb;--blue:#42a5ff;--cyan:#36e0d0}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% -10%,#17345c 0,transparent 38%),var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif}
+header{height:76px;border-bottom:1px solid #ffffff14;display:flex;align-items:center;justify-content:space-between;padding:0 max(5vw,22px);position:sticky;top:0;background:#080d18eF;backdrop-filter:blur(16px);z-index:5}
+.brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:-1px}.brandmark{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,var(--blue),var(--cyan));display:grid;place-items:center;color:#07111e;font-size:19px;font-weight:900;box-shadow:0 8px 28px #36c8ff38}.brand span{color:var(--cyan)}
+nav{display:flex;gap:24px;color:#b9c6d8;font-size:13px;font-weight:600}nav a{color:inherit;text-decoration:none}nav a:hover{color:white}
+main{max-width:1180px;margin:auto;padding:34px 24px 70px}
+.hero{display:grid;grid-template-columns:1.3fr .7fr;gap:24px;align-items:center;padding:34px 0 30px}
+.eyebrow{color:var(--cyan);font-size:11px;letter-spacing:2px;font-weight:800;text-transform:uppercase}.hero h1{font-size:clamp(34px,5vw,58px);line-height:1.02;letter-spacing:-2.8px;margin:12px 0}.hero h1 em{font-style:normal;color:var(--cyan)}.hero p{color:var(--muted);line-height:1.7;max-width:620px;font-size:14px}
+.hero-art{height:210px;border:1px solid #ffffff16;border-radius:24px;background:linear-gradient(140deg,#142b49,#101a2b 65%);display:grid;place-items:center;position:relative;overflow:hidden}.hero-art:before,.hero-art:after{content:"";position:absolute;border:1px solid #36e0d033;border-radius:50%;width:230px;height:230px}.hero-art:after{width:310px;height:310px}.screen{z-index:1;width:115px;height:80px;border:2px solid #9edcff;border-radius:13px;display:grid;place-items:center;background:#0b1527;box-shadow:0 0 55px #42a5ff55}.screen b{font-size:28px;color:var(--cyan)}
+.toolbar{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin:22px 0}.tabs{display:flex;gap:8px;flex-wrap:wrap}.tab{border:1px solid var(--line);background:var(--panel);color:#bdc9da;border-radius:999px;padding:10px 15px;font-size:12px;font-weight:700;cursor:pointer}.tab.active,.tab:hover{background:#153c58;border-color:#267e9d;color:#fff}
+.search{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 15px;color:white;min-width:min(100%,260px);outline:none}.search:focus{border-color:var(--cyan)}
+.section-head{display:flex;justify-content:space-between;align-items:end;margin:28px 0 14px}.section-head h2{font-size:19px;margin:0}.section-head small{color:var(--muted)}
+.layout{display:grid;grid-template-columns:1.55fr .85fr;gap:18px;align-items:start}
+.player-card,.directory{background:linear-gradient(180deg,#111d30,#0d1727);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.player-top{padding:16px 18px;display:flex;justify-content:space-between;align-items:center}.live{font-size:10px;color:#ff7676;font-weight:800;letter-spacing:1.5px}.player-wrap{background:#03070d;aspect-ratio:16/9;display:grid;place-items:center;position:relative}.player-wrap video{width:100%;height:100%;object-fit:contain}.empty{text-align:center;padding:25px;color:#8ea2bd}.empty .big{font-size:38px;margin-bottom:8px}.empty strong{display:block;color:#e9f2ff;margin-bottom:7px}.empty p{font-size:12px;line-height:1.6;margin:0 auto;max-width:350px}
+.player-foot{padding:14px 18px;color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.directory{padding:17px}.directory h3{font-size:14px;margin:0 0 12px}.channel-list{display:grid;gap:8px;max-height:430px;overflow:auto}.channel{width:100%;display:flex;align-items:center;gap:11px;text-align:left;background:#142139;border:1px solid transparent;border-radius:12px;padding:10px;color:white;cursor:pointer}.channel:hover,.channel.selected{border-color:#36e0d0;background:#17304a}.channel-logo{width:39px;height:39px;border-radius:10px;background:#223a59;display:grid;place-items:center;font-weight:900;color:#8ce7e4}.channel-info{flex:1}.channel-info b{display:block;font-size:12px}.channel-info small{color:#93a6c0;font-size:10px}.arrow{color:#7c91ad}
+.notice{margin-top:18px;border:1px solid #31516a;background:#10243a;border-radius:14px;padding:15px 17px;color:#b9cce0;font-size:12px;line-height:1.65}.notice b{color:#e8f7ff}
+footer{border-top:1px solid #ffffff14;padding:25px;text-align:center;color:#74869e;font-size:11px}
+@media(max-width:800px){nav{display:none}.hero{grid-template-columns:1fr}.hero-art{height:145px}.layout{grid-template-columns:1fr}main{padding:20px 15px 45px}.hero{padding-top:24px}}
+</style>
+</head>
+<body>
+<header>
+ <div class="brand"><div class="brandmark">E</div><div>EYAL <span>TV</span> ONLINE</div></div>
+ <nav><a href="#inicio">Inicio</a><a href="#canales">Canales</a><a href="#reproductor">TV en vivo</a></nav>
+</header>
+<main id="inicio">
+ <section class="hero">
+  <div><div class="eyebrow">TU TELEVISIÓN EN INTERNET</div><h1>Todo lo que te gusta,<br><em>en un solo lugar.</em></h1>
+  <p>Bienvenido a EYAL TV ONLINE. Explora canales gratuitos, noticias, cultura, deportes y entretenimiento desde tus dispositivos favoritos.</p></div>
+  <div class="hero-art"><div class="screen"><b>▶</b></div></div>
+ </section>
+ <div class="toolbar" id="canales">
+  <div class="tabs">
+   <button class="tab active" data-cat="Todos">Todos</button><button class="tab" data-cat="Perú">Perú</button><button class="tab" data-cat="Noticias">Noticias</button><button class="tab" data-cat="Deportes">Deportes</button><button class="tab" data-cat="Cultura">Cultura</button>
+  </div>
+  <input id="search" class="search" type="search" placeholder="Buscar canal..." aria-label="Buscar canal">
+ </div>
+ <div class="section-head"><h2>Canales disponibles</h2><small id="count">Directorio inicial</small></div>
+ <section class="layout" id="reproductor">
+  <div class="player-card">
+   <div class="player-top"><b id="playing">Selecciona un canal</b><span class="live">● EN VIVO</span></div>
+   <div class="player-wrap">
+    <video id="video" controls playsinline style="display:none"></video>
+    <div class="empty" id="empty"><div class="big">▣</div><strong>Tu pantalla de televisión</strong><p>Selecciona un canal con una transmisión autorizada para comenzar a verlo aquí.</p></div>
+   </div>
+   <div class="player-foot"><span id="status">Reproductor listo</span><span>EYAL TV ONLINE</span></div>
+  </div>
+  <aside class="directory"><h3>Explorar canales</h3><div class="channel-list" id="channelList"></div></aside>
+ </section>
+ <div class="notice"><b>Información importante:</b> esta plantilla es un directorio y reproductor. Para emitir dentro de la página, añade en el código la dirección HLS (.m3u8) o un enlace de inserción que el titular del canal permita utilizar. No alojes ni retransmitas señales de pago, protegidas o sin autorización. Los enlaces y transmisiones pueden cambiar según el proveedor.</div>
+</main>
+<footer>© 2026 EYAL TV ONLINE · Plataforma independiente de acceso a contenidos gratuitos autorizados.</footer>
+<script>
+// Añade canales únicamente con enlaces oficiales o transmisiones autorizadas.
+// Para reproducir dentro de la página, coloca la URL HLS permitida en "stream".
+// Si no tienes esa URL, deja stream vacío y añade el enlace oficial en "official".
+const channels = [
+ {name:"TV Perú",category:"Perú",initials:"TP",stream:"",official:"https://www.tvperu.gob.pe/"},
+ {name:"TV Perú Noticias",category:"Noticias",initials:"TN",stream:"",official:"https://www.tvperu.gob.pe/"},
+ {name:"Canal IPe",category:"Cultura",initials:"IP",stream:"",official:"https://www.canalipe.tv/"},
+ {name:"TV Perú Internacional",category:"Perú",initials:"PI",stream:"",official:"https://www.tvperu.gob.pe/"},
+ {name:"Canal público internacional",category:"Noticias",initials:"CI",stream:"",official:""},
+ {name:"Canal cultural",category:"Cultura",initials:"CC",stream:"",official:""},
+ {name:"Canal deportivo gratuito",category:"Deportes",initials:"DG",stream:"",official:""}
+];
+const list=document.getElementById('channelList'), search=document.getElementById('search');
+let category='Todos', hls=null;
+function render(){
+ const q=search.value.toLowerCase();
+ const filtered=channels.filter(c=>(category==='Todos'||c.category===category)&&(c.name.toLowerCase().includes(q)||c.category.toLowerCase().includes(q)));
+ list.innerHTML='';
+ filtered.forEach(c=>{
+  const idx=channels.indexOf(c), b=document.createElement('button'); b.className='channel'; b.innerHTML=`<span class="channel-logo">${c.initials}</span><span class="channel-info"><b>${c.name}</b><small>${c.category}</small></span><span class="arrow">›</span>`;
+  b.addEventListener('click',()=>selectChannel(idx)); list.appendChild(b);
+ });
+ document.getElementById('count').textContent=filtered.length+' canales en el directorio';
+}
+function selectChannel(i){
+ const c=channels[i], video=document.getElementById('video'), empty=document.getElementById('empty');
+ document.getElementById('playing').textContent=c.name;
+ document.querySelectorAll('.channel').forEach((el,n)=>el.classList.toggle('selected',n===i));
+ if(hls){hls.destroy();hls=null} video.pause(); video.removeAttribute('src'); video.load();
+ if(c.stream){
+  empty.style.display='none';video.style.display='block';
+  if(video.canPlayType('application/vnd.apple.mpegurl')){video.src=c.stream;video.play().catch(()=>{});}
+  else if(window.Hls&&Hls.isSupported()){hls=new Hls();hls.loadSource(c.stream);hls.attachMedia(video);hls.on(Hls.Events.MANIFEST_PARSED,()=>video.play().catch(()=>{}));}
+  else{document.getElementById('status').textContent='Este navegador no admite esta transmisión.'}
+  document.getElementById('status').textContent='Cargando señal autorizada…';
+ }else{
+  video.style.display='none';empty.style.display='block';
+  document.getElementById('status').textContent=c.official?'Abre la web oficial para ver su señal.':'Señal pendiente de configurar.';
+  if(c.official && confirm('Este canal no tiene una señal insertada. ¿Deseas abrir su sitio oficial?')) window.open(c.official,'_blank','noopener');
+ }
+}
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));t.classList.add('active');category=t.dataset.cat;render()}));
+search.addEventListener('input',render);render();
+</script>
+</body></html>
